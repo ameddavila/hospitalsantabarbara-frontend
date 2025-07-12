@@ -1,0 +1,15 @@
+{
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html",
+    "typescriptreact": "typescriptreact",
+    "javascript": "javascript",
+    "javascriptreact": "javascriptreact",
+    "html": "html"
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.classAttributes": ["class", "className", "ngClass"],
+  "tailwindCSS.experimental.configFile": "./tailwind.config.ts"
+}

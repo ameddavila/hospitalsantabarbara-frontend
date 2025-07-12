@@ -1,0 +1,8 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+export default function AboutUs() {
+    return (_jsx("section", { id: "about", className: "bg-white py-16 px-4 font-default", children: _jsxs("div", { className: "max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center", children: [_jsx("div", { className: "relative", children: _jsx("img", { src: "/assets/img/about.jpg", alt: "Sobre el hospital", className: "rounded-lg shadow-lg w-full", "data-aos": "fade-right" }) }), _jsxs("div", { "data-aos": "fade-left", children: [_jsx("h2", { className: "text-3xl font-bold text-[#1977cc] mb-4 font-heading", children: "Sobre Nosotros" }), _jsx("p", { className: "text-gray-700 mb-6", children: "Somos una instituci\u00F3n m\u00E9dica comprometida con brindar atenci\u00F3n integral y de calidad a nuestros pacientes. Nuestro enfoque humano y \u00E9tico nos convierte en uno de los hospitales m\u00E1s importantes de la regi\u00F3n." }), _jsx("ul", { className: "space-y-4", children: [
+                                "Equipo médico altamente capacitado",
+                                "Infraestructura moderna y equipada",
+                                "Atención personalizada y humanizada",
+                            ].map((item, idx) => (_jsxs("li", { className: "flex items-start gap-3", children: [_jsx("i", { className: "fas fa-check-circle text-[#1977cc] text-lg mt-1" }), _jsx("span", { className: "text-gray-700", children: item })] }, idx))) }), _jsx("div", { className: "mt-6", children: _jsx("a", { href: "#cita", className: "inline-block bg-[#1977cc] hover:bg-[#166ab5] text-white px-6 py-3 rounded-md transition text-sm font-semibold", children: "Reservar una cita" }) })] })] }) }));
+}

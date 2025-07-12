@@ -1,0 +1,28 @@
+@import "@fontsource/roboto";
+@import "@fontsource/poppins";
+@import "@fontsource/raleway";
+
+:root {
+  --default-font: "Roboto", sans-serif;
+  --heading-font: "Poppins", sans-serif;
+  --nav-font: "Raleway", sans-serif;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .form-input {
+    @apply w-full border border-gray-300 rounded-md px-4 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  .animate-fade-in {
+    @apply transition-opacity duration-500 ease-in opacity-100;
+  }
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
