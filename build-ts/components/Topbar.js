@@ -1,6 +1,0 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-// src/components/Topbar.tsx
-import { FaEnvelope, FaPhoneAlt, FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa";
-export default function Topbar() {
-    return (_jsxs("div", { className: "bg-[#1976d2] text-white text-sm py-2 px-6 flex justify-between items-center", children: [_jsxs("div", { className: "flex items-center gap-6", children: [_jsxs("span", { className: "flex items-center gap-2", children: [_jsx(FaEnvelope, { className: "text-white" }), "contact@hospitalsantabarbara.org"] }), _jsxs("span", { className: "flex items-center gap-2", children: [_jsx(FaPhoneAlt, { className: "text-white" }), "+591 (4) 645-1234"] })] }), _jsxs("div", { className: "flex items-center gap-4 text-white text-lg", children: [_jsx("a", { href: "#", className: "hover:text-gray-200", "aria-label": "X", children: _jsx(FaTwitter, {}) }), _jsx("a", { href: "#", className: "hover:text-gray-200", "aria-label": "Facebook", children: _jsx(FaFacebookF, {}) }), _jsx("a", { href: "#", className: "hover:text-gray-200", "aria-label": "Instagram", children: _jsx(FaInstagram, {}) }), _jsx("a", { href: "#", className: "hover:text-gray-200", "aria-label": "LinkedIn", children: _jsx(FaLinkedinIn, {}) })] })] }));
-}
