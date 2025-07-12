@@ -1,77 +1,89 @@
-import { useEffect } from "react";
-import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaClipboardList, FaGem, FaFlask } from "react-icons/fa";
+import useAOS from "../hooks/useAOS";
+
+const beneficios = [
+  {
+    icon: <FaClipboardList className="text-[#1977cc] text-3xl mx-auto mb-3" />,
+    titulo: "Atención integral",
+    descripcion: "Diagnóstico, prevención y tratamiento desde la primera consulta.",
+  },
+  {
+    icon: <FaGem className="text-[#1977cc] text-3xl mx-auto mb-3" />,
+    titulo: "Profesionales de calidad",
+    descripcion: "Nuestro equipo médico está conformado por especialistas certificados.",
+  },
+  {
+    icon: <FaFlask className="text-[#1977cc] text-3xl mx-auto mb-3" />,
+    titulo: "Infraestructura moderna",
+    descripcion: "Ambientes equipados para una atención segura y eficaz.",
+  },
+];
 
 export default function Hero() {
-  useEffect(() => {
-    AOS.init({ once: true, duration: 1000 });
-  }, []);
+  useAOS();
 
   return (
     <section
       id="inicio"
-      className="relative bg-[url('/assets/img/hero-bg.jpg')] bg-cover bg-center bg-no-repeat py-20 px-4"
+      className="-mt-[140px] relative bg-[url('/assets/img/hero-bg.jpg')] bg-cover bg-center bg-no-repeat text-white"
     >
-      <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-        {/* Parte izquierda */}
-        <div className="space-y-8" data-aos="fade-up">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-800 leading-tight font-heading">
+      {/* Overlay oscuro */}
+      <div className="absolute inset-0 bg-black/50 z-0" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-20">
+        {/* Columna izquierda */}
+        <div className="flex-1 space-y-8" data-aos="fade-up">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight font-heading text-white">
             Hospital <span className="text-[#1977cc]">Santa Bárbara</span>
           </h1>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-white/90 max-w-xl">
             Somos un equipo de profesionales comprometidos con tu salud.
             Nuestra misión es brindar atención médica humana y de calidad.
           </p>
 
-          {/* Caja azul */}
-          <div className="bg-[#1977cc] text-white rounded-lg p-6 shadow-md max-w-xl">
-            <h3 className="text-2xl font-bold mb-3">¿Por qué elegirnos?</h3>
-            <p className="text-sm leading-relaxed mb-4">
-              Brindamos atención oportuna, cálida y especializada. Nuestro
-              hospital cuenta con tecnología de vanguardia y personal médico
-              altamente calificado para garantizar tu bienestar.
+          <div
+            className="bg-[#1977cc] text-white rounded-2xl px-8 py-6 shadow-2xl max-w-xl"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <h3 className="text-2xl md:text-3xl font-bold mb-4 leading-snug">
+              ¿Por qué elegirnos?
+            </h3>
+            <p className="text-sm md:text-base leading-relaxed mb-6 text-white/90">
+              Brindamos atención oportuna, cálida y especializada. Nuestro hospital cuenta
+              con tecnología de vanguardia y personal médico altamente calificado para
+              garantizar tu bienestar.
             </p>
             <a
               href="#nosotros"
-              className="inline-block text-sm bg-white text-[#1977cc] px-4 py-2 rounded-full font-semibold hover:bg-gray-100 transition"
+              className="inline-flex items-center gap-2 bg-white text-[#1977cc] px-5 py-2.5 rounded-full font-semibold hover:bg-gray-100 transition-all text-sm md:text-base"
+              role="button"
+              aria-label="Ir a sección nosotros"
             >
-              Conócenos →
+              Conócenos <i className="fas fa-arrow-right" />
             </a>
           </div>
         </div>
 
-        {/* Parte derecha */}
-        <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-3" data-aos="fade-left">
-          <div className="bg-white bg-opacity-80 backdrop-blur-sm p-6 rounded-lg shadow text-center">
-            <FaClipboardList className="text-[#1977cc] text-3xl mx-auto mb-3" />
-            <h4 className="text-lg font-bold text-gray-800 mb-2">
-              Atención integral
-            </h4>
-            <p className="text-sm text-gray-600">
-              Diagnóstico, prevención y tratamiento desde la primera consulta.
-            </p>
-          </div>
-
-          <div className="bg-white bg-opacity-80 backdrop-blur-sm p-6 rounded-lg shadow text-center">
-            <FaGem className="text-[#1977cc] text-3xl mx-auto mb-3" />
-            <h4 className="text-lg font-bold text-gray-800 mb-2">
-              Profesionales de calidad
-            </h4>
-            <p className="text-sm text-gray-600">
-              Nuestro equipo médico está conformado por especialistas certificados.
-            </p>
-          </div>
-
-          <div className="bg-white bg-opacity-80 backdrop-blur-sm p-6 rounded-lg shadow text-center">
-            <FaFlask className="text-[#1977cc] text-3xl mx-auto mb-3" />
-            <h4 className="text-lg font-bold text-gray-800 mb-2">
-              Infraestructura moderna
-            </h4>
-            <p className="text-sm text-gray-600">
-              Ambientes equipados para una atención segura y eficaz.
-            </p>
-          </div>
+        {/* Columna derecha: beneficios */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full lg:w-[60%] self-end lg:justify-end"
+          data-aos="fade-left"
+          data-aos-delay="300"
+        >
+          {beneficios.map((item, i) => (
+            <div
+              key={i}
+              className="bg-white/60 backdrop-blur-sm p-6 rounded-xl shadow-md hover:shadow-lg transition-all text-center"
+              data-aos="zoom-in"
+              data-aos-delay={400 + i * 100}
+            >
+              {item.icon}
+              <h4 className="text-lg font-bold text-gray-800 mb-2">{item.titulo}</h4>
+              <p className="text-sm text-gray-600">{item.descripcion}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

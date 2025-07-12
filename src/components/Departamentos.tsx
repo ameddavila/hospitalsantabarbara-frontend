@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import { useState } from "react";
+import useAOS from "../hooks/useAOS";
 
 const departamentos = [
   {
@@ -41,9 +40,7 @@ export default function Departamentos() {
   const [activo, setActivo] = useState("cardiologia");
   const depto = departamentos.find((d) => d.id === activo)!;
 
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
+  useAOS();
 
   return (
     <section id="departamentos" className="bg-gray-50 py-16 px-4 font-default">

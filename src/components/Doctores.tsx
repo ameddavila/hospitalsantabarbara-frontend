@@ -1,6 +1,4 @@
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import useAOS from "../hooks/useAOS";
 import {
   FaFacebookF,
   FaInstagram,
@@ -68,9 +66,7 @@ const doctores: Doctor[] = [
 ];
 
 export default function Doctores() {
-  useEffect(() => {
-    AOS.init({ duration: 800, once: true });
-  }, []);
+  useAOS();
 
   return (
     <section id="doctores" className="bg-gray-50 py-16 px-4 font-default">

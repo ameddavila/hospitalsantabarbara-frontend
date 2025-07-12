@@ -1,49 +1,66 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
+const links = [
+  { path: "/", label: "Inicio" },
+  { path: "/servicios", label: "Servicios" },
+  { path: "/departamentos", label: "Departamentos" },
+  { path: "/doctores", label: "Médicos" },
+  { path: "/contacto", label: "Contacto" },
+];
 
 export default function NavMenu() {
   const [open, setOpen] = useState(false);
-  const toggleMenu = () => setOpen(!open);
-  const closeMenu = () => setOpen(false);
+  const navigate = useNavigate();
 
-  const menuItems = [
-    { to: "/", label: "Inicio" },
-    { to: "/servicios", label: "Servicios" },
-    { to: "/departamentos", label: "Departamentos" },
-    { to: "/doctores", label: "Médicos" },
-    { to: "/contacto", label: "Contacto" },
-  ];
+  // Cierra el menú al hacer scroll
+  useEffect(() => {
+    const closeOnScroll = () => setOpen(false);
+    window.addEventListener("scroll", closeOnScroll);
+    return () => window.removeEventListener("scroll", closeOnScroll);
+  }, []);
+
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    setOpen(false);
+  };
 
   return (
-    <nav className="hidden md:flex items-center gap-6 font-nav">
-      <div className="md:hidden flex justify-end items-center">
-        <button
-          onClick={toggleMenu}
-          className="text-3xl text-blue-700 focus:outline-none"
-        >
-          ☰
-        </button>
-      </div>
-
-      <ul
-        className={`${
-          open
-            ? "block absolute right-4 top-16 bg-white shadow-lg rounded-md p-4 z-50"
-            : "hidden"
-        } md:flex md:static md:bg-transparent md:shadow-none md:p-0 md:gap-6`}
+    <div className="md:hidden relative z-50">
+      {/* Botón de menú */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="text-[#1977cc] text-2xl focus:outline-none"
+        aria-label="Abrir menú"
       >
-        {menuItems.map((item) => (
-          <li key={item.to}>
-            <Link
-              to={item.to}
-              onClick={closeMenu}
-              className="block py-2 md:py-0 text-gray-700 hover:text-blue-700 transition"
+        {open ? <FaTimes /> : <FaBars />}
+      </button>
+
+      {/* Menú desplegable */}
+      {open && (
+        <div className="absolute top-12 right-0 bg-white border rounded-lg shadow-lg w-52 p-4 space-y-3 animate-fade-in">
+          {links.map((link) => (
+            <button
+              key={link.path}
+              onClick={() => handleNavigate(link.path)}
+              className="block w-full text-left relative text-gray-700 hover:text-[#1977cc] transition-all
+                before:content-[''] before:absolute before:-bottom-1 before:left-0
+                before:w-0 before:h-[2px] before:bg-[#1977cc]
+                before:transition-all before:duration-300 hover:before:w-full"
             >
-              {item.label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+              {link.label}
+            </button>
+          ))}
+
+          <a
+            href="#cita"
+            className="block text-center bg-[#1977cc] text-white px-4 py-2 rounded-full text-sm hover:bg-[#166ab5] transition"
+          >
+            Reservar cita
+          </a>
+        </div>
+      )}
+    </div>
   );
 }
